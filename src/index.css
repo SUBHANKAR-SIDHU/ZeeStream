@@ -9,3 +9,23 @@
     background: #1F1E24;
     border-radius: 10px;
 }
+
+/* @theme{
+    --animate-cardsInfinite: cardInfinite 3s ease-in-out infinite;
+    @keyframes identifier {
+        
+    }
+} */
+
+@keyframes cardInfinite {
+    from {
+        translate: 0;
+    }
+
+    to {
+        translate: -100%;
+    }
+}
+.animate-cardInfinite{
+    animation: cardInfinite 30s linear infinite;
+}
