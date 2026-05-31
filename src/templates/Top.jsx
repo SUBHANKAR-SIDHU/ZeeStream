@@ -1,6 +1,7 @@
 import axios from '../utils/axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import noImage from "/noImage.jpeg";
 
 function Top() {
     const [query, setQuery] = useState("");
@@ -29,13 +30,13 @@ function Top() {
                     <i className="ri-close-circle-line"></i>
                 </span>)}
             </div>
-            <div className='w-[52%] mt-2 max-h-[45vh] bg-zinc-400/50  border-zinc-200  text-zinc-100 rounded overflow-auto'>
+            <div className='w-[52%] mt-2 max-h-[45vh] bg-zinc-400/50 absolute top-[85%]  border-zinc-200  text-zinc-100 rounded overflow-auto'>
                 {searchList.map((s, i) => {
                     const imagePath = s.poster_path || s.profile_path || s.backdrop_path;
-                    const imageSrc = imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : '';
+                    const imageSrc = imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
                     return (
                         <Link key={i} className='flex gap-3  border-zinc-200 border-b   hover:bg-zinc-500 duration-300 px-4 py-3'>
-                        <img className='w-9 h-9 rounded-full  object-cover' src={imageSrc} alt={s.imagePath} />
+                        <img className='w-9 h-9 rounded-lg  object-cover' src={imageSrc} alt={s.imagePath} />
                             <h1>{
                                 s.title || s.name || s.original_title || s.original_name
                             }</h1>
