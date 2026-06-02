@@ -4,6 +4,7 @@ import Top from '../templates/Top'
 import axios from '../utils/axios';
 import Header from '../templates/Header';
 import HorizontalCard from '../templates/HorizontalCard';
+import Loading from '../templates/Loading';
 
 function Home() {
     document.title = "Z | Homepage";
@@ -46,7 +47,7 @@ function Home() {
                 </div>
             </div>
         </>
-    ) : <h1>Loading</h1>
+    ) : <Loading/>
 }
 
 export default Home
