@@ -30,7 +30,7 @@ function Top() {
                     <i className="ri-close-circle-line"></i>
                 </span>)}
             </div>
-            <div className='w-[52%] mt-2 max-h-[45vh] bg-zinc-400/50 absolute top-[85%]  border-zinc-200  text-zinc-100 rounded overflow-auto'>
+            <div className='w-[52%] mt-2 max-h-[45vh] bg-zinc-400/50 absolute z-10 top-[85%]  border-zinc-200  text-zinc-100 rounded overflow-auto'>
                 {searchList.map((s, i) => {
                     const imagePath = s.poster_path || s.profile_path || s.backdrop_path;
                     const imageSrc = imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
