@@ -10,7 +10,7 @@ function Cards({ data=[] }) {
                     const imageSrc = imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
                     return (
                         <div key={d.id ?? i}
-                            className="cards flex ml-4 flex-col border-gray-400 border left-[80vh] overflow-hidden h-56 w-50 items-center rounded-[15px] opacity-[0.9] duration-300 hover:opacity-[1] hover:scale-[1.1] hover:cursor-pointer">
+                            className="cards flex ml-4 flex-col border-zinc-400 border left-[80vh] overflow-hidden h-56 w-50 items-center rounded-[15px] opacity-[0.9] duration-300 hover:opacity-[1] hover:scale-[1.1] hover:cursor-pointer">
                             <img className='h-1/2 w-full duration-300 object-cover  ' src={imageSrc}
                                 alt={d.title || d.name || 'card'} />
                             <div className='ml-2'>
