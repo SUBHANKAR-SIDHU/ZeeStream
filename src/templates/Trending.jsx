@@ -37,7 +37,7 @@ function Trending() {
 
     return (
         <div className='w-screen h-screen p-5 overflow-y-auto '>
-            <div className='flex  justify-center px-10 '>
+            <div className='flex justify-center px-10 '>
                 <h1 onClick={() => { backBtn(-1) }} className='text-xl uppercase hover:cursor-pointer hover:text-zinc-100 font-semibold text-zinc-300 flex gap-2'><i className="ri-arrow-left-long-line"></i>Trending</h1>
                 <Top />
                 <Dropdown title="Category" func={(e) => setCategory(e.target.value)} options={["all", "tv", "movie"]} />
