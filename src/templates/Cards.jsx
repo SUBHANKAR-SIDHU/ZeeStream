@@ -1,29 +1,38 @@
-import React from 'react'
+import React from "react";
+import noImage from "/noImage.jpeg";
 
-function Cards({ data=[] }) {
+function Cards({ data = [] }) {
 
     return (
-        <div className='flex   mt-2 w-full'>
-            <div className="flex mt-5  flex-wrap justify-center gap-4 ">
+        <div className='flex mt-2 w-full'>
+            <div className='flex mt-5 relative flex-wrap justify-center gap-4 '>
                 {data.map((d, i) => {
                     const imagePath = d.poster_path || d.profile_path || d.backdrop_path;
-                    const imageSrc = imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
+                    const imageSrc =
+                        imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
                     return (
-                        <div key={i} 
-                            className="cards flex ml-4 mt-2 flex-col border-zinc-400 border left-[80vh] overflow-hidden h-56 w-50 items-center rounded-[15px] opacity-[0.9] duration-300 hover:opacity-[1] hover:scale-[1.1] hover:cursor-pointer">
-                            <img className='h-[90%] w-full duration-300 object-cover  ' src={imageSrc}
-                                alt={d.title || d.name || 'card'} />
+                        <div
+                            key={i}
+                            className='cards flex ml-4 mt-2 flex-col border-zinc-400 border left-[80vh] overflow-hidden h-56 w-50 items-center rounded-[15px] opacity-[0.9] duration-300 hover:opacity-[1] hover:scale-[1.1] hover:cursor-pointer'>
+                            <img
+                                className='h-[90%] w-full duration-300 object-cover  '
+                                src={imageSrc}
+                                alt={d.title || d.name || "card"}
+                            />
                             <div className='ml-3'>
-                                <h1 className=' text-zinc-400 font-semibold'>{
-                                    d.title || d.name || d.original_title || d.original_name
-                                }</h1>
+                                <h1 className=' text-zinc-400 font-semibold'>
+                                    {d.title || d.name || d.original_title || d.original_name}
+                                </h1>
                             </div>
+                            {d.vote_average && <div className="w-10 h-10 flex  justify-center right-0 bottom-3 items-center  absolute bg-amber-300 text-white rounded-full">
+                                {d.vote_average.toFixed(1)}
+                            </div>}
                         </div>
-                    )
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }
 
-export default Cards
+export default Cards;
