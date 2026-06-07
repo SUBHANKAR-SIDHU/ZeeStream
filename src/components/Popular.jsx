@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Top from "./Top";
-import Dropdown from "./Dropdown";
+import Top from "../templates/Top";
+import Dropdown from "../templates/Dropdown";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useNavigate } from "react-router-dom";
-import Cards from "./Cards";
+import Cards from "../templates/Cards";
 import axios from "../utils/axios";
 
 function Popular() {

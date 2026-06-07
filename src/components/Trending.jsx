@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Top from './Top'
-import Dropdown from './Dropdown'
+import Top from '../templates/Top'
+import Dropdown from '../templates/Dropdown'
 import { data, useNavigate } from 'react-router-dom'
 import axios from '../utils/axios';
-import Cards from './Cards';
+import Cards from '../templates/Cards';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 function Trending() {

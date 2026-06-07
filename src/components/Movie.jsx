@@ -1,10 +1,10 @@
 import axios from '../utils/axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Top from './Top';
-import Dropdown from './Dropdown';
+import Top from '../templates/Top';
+import Dropdown from '../templates/Dropdown';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Cards from './Cards';
+import Cards from '../templates/Cards';
 
 function Movie() {
     const backBtn = useNavigate();
@@ -40,7 +40,7 @@ function Movie() {
             <div className='flex  justify-center px-10 '>
                 <h1 onClick={() => { backBtn(-1) }} className='text-xl uppercase hover:cursor-pointer hover:text-zinc-100 font-semibold text-zinc-300 flex gap-2'><i className="ri-arrow-left-long-line"></i>Movies</h1>
                 <Top />
-                <Dropdown title="Category" func={(e) => setCategory(e.target.value)} options={["upcoming","popular","now_playing"]} />
+                <Dropdown title="Category" func={(e) => setCategory(e.target.value)} options={["upcoming", "popular", "now_playing"]} />
             </div>
             <InfiniteScroll
                 dataLength={cards.length}
