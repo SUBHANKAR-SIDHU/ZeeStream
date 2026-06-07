@@ -39,7 +39,7 @@ function Sidenav() {
                 ))}
                 <hr />
                 <Link to={"/about"} className='font-semibold mt-4  flex gap-1 mb-3 w-full px-4 py-2  hover:border-none hover:bg-[#6556CD] rounded duration-300'><i className="ri-info-card-line"></i>About <span className='text-red-400'>Stream</span></Link>
-                <Link className='font-semibold  flex gap-1 mb-3 w-full px-4 py-2  hover:border-none hover:bg-[#6556CD] rounded duration-300'><i className="ri-customer-service-2-fill"></i>Contact Us</Link>
+                <Link to={"/contactus"} className='font-semibold  flex gap-1 mb-3 w-full px-4 py-2  hover:border-none hover:bg-[#6556CD] rounded duration-300'><i className="ri-customer-service-2-fill"></i>Contact Us</Link>
             </nav>
         </div>
     )
