@@ -1,7 +1,8 @@
 import React from "react";
 import noImage from "/noImage.jpeg";
+import { Link } from "react-router-dom";
 
-function Cards({ data = [] }) {
+function Cards({ data = [] ,title }) {
 
     return (
         <div className='flex mt-2 w-full'>
@@ -11,7 +12,7 @@ function Cards({ data = [] }) {
                     const imageSrc =
                         imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
                     return (
-                        <div
+                        <Link to={`/${d.media_type||title}/details/${d.id}`}
                             key={i}
                             className='cards flex ml-4 mt-2 flex-col border-zinc-400 border left-[80vh] overflow-hidden h-56 w-50 items-center rounded-[15px] opacity-[0.9] duration-300 hover:opacity-[1] hover:scale-[1.1] hover:cursor-pointer'>
                             <img
@@ -27,7 +28,7 @@ function Cards({ data = [] }) {
                             {d.vote_average && <div className="w-10 h-10 flex  justify-center right-0 bottom-3 items-center  absolute bg-amber-300 text-white rounded-full">
                                 {d.vote_average.toFixed(1)}
                             </div>}
-                        </div>
+                        </Link>
                     );
                 })}
             </div>
