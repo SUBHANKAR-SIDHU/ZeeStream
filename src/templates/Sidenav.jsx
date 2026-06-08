@@ -26,7 +26,7 @@ function Sidenav() {
         {
             title: "People",
             icon : <i className="ri-team-line"></i>,
-            link: "/people"
+            link: "/person"
         },
     ]
     return (
