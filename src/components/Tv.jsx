@@ -46,7 +46,7 @@ function Tv() {
                 next={getCards}
                 hasMore={hasMore}
                 loader={<p>Loading...</p>}>
-                <Cards data={cards} />
+                <Cards data={cards} title="tv"/>
             </InfiniteScroll>
         </div>
     )

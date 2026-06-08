@@ -55,7 +55,7 @@ function Popular() {
                 next={getCards}
                 hasMore={hasMore}
                 loader={<p>Loading...</p>}>
-                <Cards data={cards} />
+                <Cards data={cards} title={"movie"}/>
             </InfiniteScroll>
         </div>
     );
