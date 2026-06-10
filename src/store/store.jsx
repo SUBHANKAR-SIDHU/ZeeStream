@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { movieSlice } from "./reducer/movieSlicer";
-import { peopleSlice } from "./reducer/peopleSlicer";
-import { tvSlice } from "./reducer/tvSlicer";
+import  movieSlice  from "./reducer/movieSlicer";
+import  peopleSlice  from "./reducer/peopleSlicer";
+import  tvSlice  from "./reducer/tvSlicer";
 
 export const store = configureStore({
     reducer: {
