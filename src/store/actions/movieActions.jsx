@@ -15,10 +15,11 @@ export const asyncloadmovie = (id) => async (dispatch, getState) => {
             detail: detail.data,
             externalid: externalid.data,
             recommendation: recommendation.data.results,
-            similar : similar.data,
-            video : video.data ,
-            watchprovider : watchprovider.data
+            similar: similar.data,
+            video: video.data.results.find((m) => m.type === "Trailer"),
+            watchprovider: watchprovider.data.results.IN
         }
+        dispatch(loadmovie(allDetails));
     } catch (error) {
         console.log(error);
     }
