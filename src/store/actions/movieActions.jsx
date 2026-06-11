@@ -17,7 +17,7 @@ export const asyncloadmovie = (id) => async (dispatch, getState) => {
             recommendation: recommendation.data.results,
             similar: similar.data,
             video: video.data.results.find((m) => m.type === "Trailer"),
-            watchprovider: watchprovider.data.results.IN
+            watchprovider: watchprovider.data.results.US
         }
         dispatch(loadmovie(allDetails));
     } catch (error) {
