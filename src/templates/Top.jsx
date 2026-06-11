@@ -35,7 +35,7 @@ function Top() {
                     const imagePath = s.poster_path || s.profile_path || s.backdrop_path;
                     const imageSrc = imagePath ? `https://image.tmdb.org/t/p/w200${imagePath}` : noImage;
                     return (
-                        <Link key={i} className='flex gap-3  border-zinc-200 border-b   hover:bg-zinc-500 duration-300 px-4 py-3'>
+                        <Link to={`/${s.media_type}/details/${s.id}`} key={i} className='flex gap-3  border-zinc-200 border-b   hover:bg-zinc-500 duration-300 px-4 py-3'>
                         <img className='w-9 h-9 rounded-lg  object-cover' src={imageSrc} alt={s.imagePath} />
                             <h1>{
                                 s.title || s.name || s.original_title || s.original_name
