@@ -5,8 +5,7 @@ function HorizontalCard({ data = [] }) {
 
     return (
         <div className="carousel w-full">
-            <h1 className='text-2xl mb-1 text-white font-semibold'>Trending</h1>
-            <div className='flex overflow-x-auto min-h-full mt-2 w-full'>
+            <div className='flex overflow-x-auto min-h-full mt-2 w-full p-5'>
                 <div className="group  flex animate-cardInfinite items-center justify-center gap-4 ">
                     {data.map((d, i) => {
                         const imagePath = d.poster_path || d.profile_path || d.backdrop_path;
