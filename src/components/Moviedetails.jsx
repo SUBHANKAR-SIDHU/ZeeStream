@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
 import { asyncloadmovie, removemovie } from '../store/actions/movieActions';
 import Loading from '../templates/Loading';
 import { FaWikipediaW } from "react-icons/fa6";
 import { LiaImdb } from "react-icons/lia";
 import { FiExternalLink } from "react-icons/fi";
+import HorizontalCard from "../templates/HorizontalCard";
+import Trailer from '../templates/Trailer';
 
 function MovieDetails() {
     const backBtn = useNavigate()
     const { id } = useParams();
     const dispatch = useDispatch();
     const { info } = useSelector((state) => state.movie);
+    console.log(info)
 
     useEffect(() => {
         if (id) {
@@ -37,6 +40,7 @@ function MovieDetails() {
     const buyProviders = info.watchprovider?.buy || [];
     const genres = info.detail.genres || [];
     const companies = info.detail.production_companies || [];
+    const movieSuggestion = info.recommendation || info.similar;
     return (
         <div
             style={{
@@ -44,7 +48,7 @@ function MovieDetails() {
                 backgroundPosition: 'center',
                 backgroundSize: 'cover'
             }}
-            className='w-full min-h-screen px-6 py-3'
+            className='w-full min-h-screen px-6 py-3 overflow-y-auto overflow-x-hidden relative'
         >
             <nav className='max-w-6xl mx-auto flex items-center justify-between text-zinc-200 mb-2'>
                 <div className='flex items-center gap-4'>
@@ -54,18 +58,18 @@ function MovieDetails() {
                 <div className='flex items-center gap-4'>
                     <a target='_blank' rel='noreferrer' href={`https://www.wikidata.org/wiki/${info.externalid?.wikidata_id || ''}`} className='hover:text-zinc-100 text-xl '><FaWikipediaW /></a>
                     {info.detail.homepage && <a target='_blank' rel='noreferrer' href={info.detail.homepage} className='hover:text-zinc-100 text-xl '><FiExternalLink /></a>}
-                    <a target='_blank' rel='noreferrer' href={`https://www.imdb.com/title/${info.externalid?.imdb_id || ''}`} className='hover:text-zinc-100 text-2xl'><LiaImdb /></a>
+                    <a target='_blank' rel='noreferrer' href={`https://www.imdb.com/title/${info.externalid?.imdb_id || ''}`} className='hover:text-zinc-100 text-3xl'><LiaImdb /></a>
                 </div>
             </nav>
 
-            <main className='max-w-6xl mx-auto bg-black/2  rounded-lg p-3 grid grid-cols-1 md:grid-cols-3 gap-6'>
-                <div className='col-span-1 flex justify-center items-start'>
-                    <div className='w-48 h-82 md:w-56 lg:w-64 shadow-lg rounded overflow-hidden'>
-                        <img className='object-cover w-full h-full' src={imageSrc} alt={info.detail.title || 'poster'} />
+            <main className='w-full rounded-lg  p-3 grid grid-cols-1 md:grid-cols-3 gap-6'>
+                <div className='col-span-1 flex justify-end items-center'>
+                    <div className='w-48 h-72 md:w-56 lg:w-64 shadow-lg  overflow-hidden'>
+                        <img className='object-cover' src={imageSrc} alt={info.detail.title || 'poster'} />
                     </div>
                 </div>
 
-                <div className='col-span-2 text-zinc-100'>
+                <div className='col-span-2 text-zinc-100 '>
                     <h1 className='text-3xl md:text-4xl font-extrabold mb-2'>
                         {info.detail.title || info.detail.name || info.detail.original_title || info.detail.original_name}
                     </h1>
@@ -74,10 +78,11 @@ function MovieDetails() {
                         {genres.map((g, i) => (
                             <span key={i} className='px-2 py-1 bg-indigo-600/20 text-indigo-300 rounded'>{g.name}</span>
                         ))}
-                        {info.detail.tagline && <span className='italic ml-2 text-sm opacity-90'>{info.detail.tagline}</span>}
+                        {info.detail.tagline && <span className='italic ml-2 font-semibold text-sm '>{info.detail.tagline}</span>}
                     </div>
 
                     <p className='text-zinc-200/90 leading-relaxed mb-4'>{info.detail.overview}</p>
+                    <Link to={`/movie/details/${info.detail.id}/trailer`} className='px-3 py-2 mt-3 rounded bg-blue-400 hover:bg-blue-600 hover:cursor-pointer text-white '>Watch Trailer</Link>
 
                     <div className='mt-4'>
                         <h3 className='font-semibold mb-2 text-zinc-100'>Production Companies</h3>
@@ -95,9 +100,8 @@ function MovieDetails() {
                         </div>
                     </div>
                 </div>
-
-                <div className='col-span-1 md:col-span-3 '>
-                    <h3 className='font-bold text-zinc-100 mb-3'>Available To Buy</h3>
+                <div className='col-span-1 text-zinc-100 md:col-span-3 '>
+                    <h3 className='font-bold  mb-3'>Available To Buy</h3>
                     <div className='flex gap-4 flex-wrap'>
                         {buyProviders.length ? buyProviders.map((w, i) => (
                             <div key={i} className='flex items-center gap-3 bg-zinc-900/40 p-2 rounded'>
@@ -106,6 +110,11 @@ function MovieDetails() {
                             </div>
                         )) : <p className='text-zinc-300'>Not available</p>}
                     </div>
+                </div>
+                <div className='w-[94vw] '>
+                    <h1 className='text-2xl mb-1 text-white font-semibold'>Recommendation</h1>
+                    <HorizontalCard data={movieSuggestion} />
+                    <Outlet/>
                 </div>
             </main>
         </div>
